@@ -8,8 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create!(name: item_params[:name], price: item_params[:price], email: item_params[:email],
-                 user_id: current_user.id)
+    Item.create!(item_params)
   end
 
   private

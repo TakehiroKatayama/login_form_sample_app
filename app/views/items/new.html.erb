@@ -1,15 +1,18 @@
 <h1>ご購入商品の情報を入力</h1>
 <% if user_signed_in? %>
   <%= form_with model: @item, local: true do |form| %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :email ,:value => current_user.email%>
     <p><%= form.label :name, "商品名" %> <%= form.text_field :name %></p>
     <p><%= form.label :price, "値段" %> <%= form.text_field :price %></p>
     <%= form.submit "送信" %>
   <% end %>
 <% else %>
   <%= form_with model: @item, local: true do |form| %>
+    <%= form.hidden_field :user_id, :value => 2 %>
     <p><%= form.label :name, "商品名" %> <%= form.text_field :name %></p>
     <p><%= form.label :price, "値段" %> <%= form.text_field :price %></p>
-    <p><%= form.label :email, "値段" %> <%= form.email_field :email %></p>
+    <p><%= form.label :email, "メールアドレス" %> <%= form.email_field :email %></p>
     <%= form.submit "送信" %>
   <% end %>
 <% end %>
